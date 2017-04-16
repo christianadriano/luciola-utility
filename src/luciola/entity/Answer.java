@@ -13,10 +13,6 @@ import java.util.Locale;
  */
 public class Answer {
 	
-	public static final String YES = "YES, THERE IS AN ISSUE";
-	public static final String I_DONT_KNOW = "I DON'T KNOW";
-	public static final String NO = "NO, THERE IS NOT AN ISSUE";
-
 	public String option;
 	public int confidenceOption;
 	public String explanation;
@@ -28,11 +24,16 @@ public class Answer {
 	public String sessionID; //the session in which the answer was produced (3 answers per session)
 	public Date timeStampDate;
 
+	public String TP;
+	public String TN;
+	public String FN;
+	public String FP;
+	
 	public Worker worker; //worker who produced the answer 
 
 	public Answer(String option, int confidenceOption, String explanation, String workerId, 
-			String elapsedTime, String timeStamp, int difficulty, int orderInWorkerSession, String sessionID, 
-			Worker worker){
+			String elapsedTime, String timeStamp, int difficulty, int orderInWorkerSession, 
+			String sessionID, Worker worker, String TP, String TN, String FN, String FP){
 		
 		this.option = option;
 		this.confidenceOption = confidenceOption;
@@ -43,6 +44,11 @@ public class Answer {
 		this.difficulty = difficulty;
 		this.orderInWorkerSession = orderInWorkerSession;
 		this.sessionID = sessionID; //So we know from which session this answer came (3 answers per session)
+		
+		this.TP = TP;
+		this.TN = TN;
+		this.FN = FN;
+		this.FP = FP;
 		
 		this.timeStampDate = convertDateTime(timeStamp);
 		if(timeStampDate!=null)

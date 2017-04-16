@@ -60,7 +60,8 @@ public class WorkerAnswerLoader {
 
 	private void run() {
 
-		ArrayList<String> lineList = this.readToBuffer("C://firefly//","answerList_data.csv");	
+		ArrayList<String> lineList = this.readToBuffer("C://Users//chris//OneDrive//Documentos//GitHub//luciola-utility//src//luciola//data//","answerList_photinus_data.csv");
+		lineList.remove(0);//ignore first line
 		for(String line: lineList){
 			String[] tokenized = line.split(",");
 			String counterStr=tokenized[0];
@@ -93,6 +94,7 @@ public class WorkerAnswerLoader {
 				String gender=tokenized[22];
 				String whereLearnedToCode=tokenized[23];
 				String country=tokenized[24];
+				System.out.println(counterStr+"_"+country);
 				String programmingLanguage = tokenized[25];
 				worker = new Worker(workerID, workerScore, workerProfession, yearsOfExperience,age,
 						gender,  whereLearnedToCode, country, programmingLanguage);
@@ -104,7 +106,7 @@ public class WorkerAnswerLoader {
 			
 			Answer answer = new Answer(answerOption, new Integer(confidence), explanation, workerID, 
 					durationStr, timestampStr, new Integer(difficulty), new Integer(answerOrder), sessionID, 
-					worker);
+					worker, TP, TN, FN, FP);
 
 			answerMap.put(counterStr,answer);
 
@@ -118,8 +120,7 @@ public class WorkerAnswerLoader {
 
 	}
 
-
-
+	//--------------------------------------------------------
 	public static void main(String[] args){
 		WorkerAnswerLoader loader = new WorkerAnswerLoader();
 		loader.run();
