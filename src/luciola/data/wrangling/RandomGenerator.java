@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.Stack;
 
 /**
  * Generate unique N numbers within a range
@@ -24,7 +25,7 @@ public class RandomGenerator {
 		return list;
 	}
 	
-	public static ArrayList<Integer>runUniqueNonContiguous(int size, int range){
+	public static Stack<Integer>runUniqueNonContiguous(int size, int range){
 
 		Random generator = new Random(System.currentTimeMillis());
 		
@@ -34,13 +35,16 @@ public class RandomGenerator {
 			randomNumbersMap.put(number,number);
 		}
 		
-		ArrayList<Integer> list = new ArrayList<Integer>(randomNumbersMap.values());
+		Stack<Integer> stack = new Stack<Integer>();
+		for(Integer key : randomNumbersMap.keySet()){
+			stack.push(key);
+		}
 		
-//		for(Integer number:list){
+//		for(Integer number:stack){
 //			System.out.print(number+",");
 //		}
 		
-		return list;
+		return stack;
 	}
 	
 	//----------------------------------------------
