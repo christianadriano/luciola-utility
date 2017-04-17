@@ -104,7 +104,7 @@ public class WorkerAnswerLoader {
 				worker = this.workerMap.get(workerID);
 			}
 			
-			Answer answer = new Answer(answerOption, new Integer(confidence), explanation, workerID, 
+			Answer answer = new Answer(counterStr,answerOption, new Integer(confidence), explanation, workerID, 
 					durationStr, timestampStr, new Integer(difficulty), new Integer(answerOrder), sessionID, 
 					worker, TP, TN, FN, FP);
 
