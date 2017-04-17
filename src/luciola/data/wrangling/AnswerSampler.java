@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
+import java.util.Stack;
 
 import luciola.entity.Answer;
 
@@ -45,13 +46,11 @@ public class AnswerSampler {
 			HashMap<String,Answer> trainingMap = new HashMap<String,Answer>();
 			HashMap<String,Answer> testingMap = (HashMap<String, Answer>) loader.answerMap.clone();
 			
-			Random generator = new Random(System.currentTimeMillis());
 			List<Answer> answerList = new ArrayList<Answer>(loader.answerMap.values());
-			int j=0;
-			while(j<trainingSize){
-				j++;
 			
-				int randomIndex = new Random().nextInt(answerList.size());
+			Stack<Integer> stack = RandomGenerator.runUniqueNonContiguous(trainingSize, loader.answerMap.size());
+			
+			for(Integer randomIndex:stack){
 				
 				Answer randomAnswer = answerList.get(randomIndex);
 				trainingMap.put(randomAnswer.ID, randomAnswer);
