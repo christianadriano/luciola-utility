@@ -58,7 +58,7 @@ public class WorkerAnswerLoader {
 	}
 
 
-	private void run() {
+	public void run() {
 
 		ArrayList<String> lineList = this.readToBuffer("C://Users//chris//OneDrive//Documentos//GitHub//luciola-utility//src//luciola//data//","answerList_photinus_data.csv");
 		lineList.remove(0);//ignore first line
