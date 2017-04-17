@@ -13,6 +13,7 @@ import java.util.Locale;
  */
 public class Answer {
 	
+	public String ID; //unique identifier (produced by a sequence counter while uploading the file)
 	public String option;
 	public int confidenceOption;
 	public String explanation;
