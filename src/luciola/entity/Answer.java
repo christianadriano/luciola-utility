@@ -32,10 +32,11 @@ public class Answer {
 	
 	public Worker worker; //worker who produced the answer 
 
-	public Answer(String option, int confidenceOption, String explanation, String workerId, 
+	public Answer(String ID, String option, int confidenceOption, String explanation, String workerId, 
 			String elapsedTime, String timeStamp, int difficulty, int orderInWorkerSession, 
 			String sessionID, Worker worker, String TP, String TN, String FN, String FP){
 		
+		this.ID = ID;
 		this.option = option;
 		this.confidenceOption = confidenceOption;
 		this.explanation = explanation;
