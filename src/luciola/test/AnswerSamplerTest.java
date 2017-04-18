@@ -17,8 +17,10 @@ public class AnswerSamplerTest {
 	public void test() {
 		AnswerSampler sampler = new AnswerSampler();
 		
+		String fileName = "C://Users//chris//OneDrive//Documentos//GitHub//luciola-utility//src//luciola//data//answerList_photinus_data.csv";
+		
 		int trainingSize = new Double(2579).intValue();
-		ArrayList<TrainingTestingPair> pairList = sampler.generateTrainingTestingSets(trainingSize, 2);
+		ArrayList<TrainingTestingPair> pairList = sampler.generateTrainingTestingSets(trainingSize, 2,fileName);
 	
 		TrainingTestingPair pair_1 = pairList.get(0);
 		System.out.println(pair_1.testingMap.size());
