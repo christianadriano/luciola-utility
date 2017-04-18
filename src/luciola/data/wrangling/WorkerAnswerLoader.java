@@ -36,7 +36,6 @@ public class WorkerAnswerLoader {
 
 	public void run(String fileName) {
 
-
 		ArrayList<String> lineList = ReadWriteFile.readToBuffer(fileName);
 		lineList.remove(0);//ignore first line
 		for(String line: lineList){
@@ -92,7 +91,6 @@ public class WorkerAnswerLoader {
 				questionMap.put(questionID, question);
 			}		
 		}
-
 	}
 
 	//--------------------------------------------------------

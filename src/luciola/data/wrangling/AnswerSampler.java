@@ -1,5 +1,7 @@
 package luciola.data.wrangling;
 
+import luciola.data.wrangling.TrainingTestingPair;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,12 +20,7 @@ import luciola.util.RandomGenerator;
  */
 public class AnswerSampler {
 
-	public class TrainingTestingPair{
-
-		public HashMap<String,Answer> trainingMap = new HashMap<String,Answer>();
-		public HashMap<String,Answer> testingMap = new HashMap<String,Answer>();
-
-	}
+	
 
 
 	/** 
@@ -70,12 +67,6 @@ public class AnswerSampler {
 	}
 
 	
-	//-----------------------------------------------------
-	public static void main(String[] args){
-
-		
-		
-		
-	}
+	
 
 }
