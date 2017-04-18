@@ -7,6 +7,7 @@ import java.util.Random;
 import java.util.Stack;
 
 import luciola.entity.Answer;
+import luciola.util.RandomGenerator;
 
 /**
  * Sample answers to serve as training and testing sets
@@ -31,10 +32,10 @@ public class AnswerSampler {
 	 * are not part of the training set.
 	 * @param numberOfSamples how many pairs of training and testing sets.
 	 */
-	public ArrayList<TrainingTestingPair> generateTrainingTestingSets(int trainingSize, int numberOfSamples){
+	public ArrayList<TrainingTestingPair> generateTrainingTestingSets(int trainingSize, int numberOfSamples, String fileName){
 
 		WorkerAnswerLoader loader = new WorkerAnswerLoader();
-		loader.run();
+		loader.run(fileName);
 
 		if(trainingSize>loader.answerMap.size())
 			return null;

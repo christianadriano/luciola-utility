@@ -5,6 +5,7 @@ package luciola.data.wrangling;
 
 import luciola.entity.Answer;
 import luciola.entity.Worker;
+import luciola.util.ReadWriteFile;
 import luciola.entity.Question;
 
 import java.io.BufferedReader;
@@ -32,35 +33,11 @@ public class WorkerAnswerLoader {
 	public HashMap<String, Question> questionMap = new HashMap<String, Question>();
 	
 
-	/** 
-	 * Load all lines of file into and Array of Strings 
-	 * @return ArrayList where each element has the content of a line in the file
-	 */
-	public  ArrayList<String> readToBuffer(String path, String sourceFileName){
 
-		ArrayList<String> buffer = new ArrayList<String>();
-
-		BufferedReader log;
-		try {
-			log = new BufferedReader(new FileReader(path +sourceFileName));
-			String line = null;
-			while ((line = log.readLine()) != null) {
-				buffer.add(line);
-			}
-			log.close();
-			return buffer;
-		} 
-		catch (Exception e) {
-			System.out.println("ERROR while processing file:" + path+sourceFileName);
-			e.printStackTrace();
-			return null;
-		}
-	}
+	public void run(String fileName) {
 
 
-	public void run() {
-
-		ArrayList<String> lineList = this.readToBuffer("C://Users//chris//OneDrive//Documentos//GitHub//luciola-utility//src//luciola//data//","answerList_photinus_data.csv");
+		ArrayList<String> lineList = ReadWriteFile.readToBuffer(fileName);
 		lineList.remove(0);//ignore first line
 		for(String line: lineList){
 			String[] tokenized = line.split(",");
@@ -85,8 +62,7 @@ public class WorkerAnswerLoader {
 			String workerID=tokenized[17];
 			Worker worker=null;
 			
-			if(!workerMap.containsKey(workerID)){
-				
+			if(!workerMap.containsKey(workerID)){			
 				String workerScore=tokenized[18];
 				String workerProfession=tokenized[19];
 				String yearsOfExperience=tokenized[20];
@@ -114,8 +90,7 @@ public class WorkerAnswerLoader {
 			if(!questionMap.containsKey(questionID)){
 				question =  new Question(questionID, javaMethod, new Integer(loc), new Integer(complexity));
 				questionMap.put(questionID, question);
-			}
-			
+			}		
 		}
 
 	}
@@ -123,7 +98,7 @@ public class WorkerAnswerLoader {
 	//--------------------------------------------------------
 	public static void main(String[] args){
 		WorkerAnswerLoader loader = new WorkerAnswerLoader();
-		loader.run();
+		loader.run("C://Users//chris//OneDrive//Documentos//GitHub//luciola-utility//src//luciola//data//answerList_photinus_data.csv");
 	}
 
 
