@@ -7,7 +7,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import luciola.data.wrangling.AnswerSampler;
-import luciola.data.wrangling.AnswerSampler.TrainingTestingPair;
+import luciola.data.wrangling.TrainingTestingPair;
 
 public class AnswerSamplerTest {
 
@@ -18,7 +18,7 @@ public class AnswerSamplerTest {
 		String fileName = "C://Users//chris//OneDrive//Documentos//GitHub//luciola-utility//src//luciola//data//answerList_photinus_data.csv";
 		
 		int trainingSize = new Double(2579).intValue();
-		ArrayList<TrainingTestingPair> pairList = sampler.generateTrainingTestingSets(trainingSize, 2,fileName);
+		ArrayList<luciola.data.wrangling.TrainingTestingPair> pairList = sampler.generateTrainingTestingSets(trainingSize, 2,fileName);
 	
 		TrainingTestingPair pair_1 = pairList.get(0);
 		System.out.println(pair_1.testingMap.size());
